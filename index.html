@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>第7题 - 高斯消去法求解器</title>
+    <link rel="stylesheet" href="./css/style.css" />
+  </head>
+  <body>
+    <main class="single-page-shell">
+      <section id="page-gaussian" class="page page--single is-active">
+          <header class="page__header">
+            <p class="eyebrow">计算方法 · 第7题</p>
+            <h1>选列主元高斯消去法求解器</h1>
+            <p>
+              本页面只保留第 7 题内容。上半部分用于复现实验报告中的例题，下半部分用于
+              通用方程组输入与求解，两部分都采用选列主元高斯消去法。
+            </p>
+          </header>
+
+          <section class="panel controls-panel">
+            <div class="panel__header">
+              <h3>第一部分 · 题目例题实例</h3>
+              <p>直接使用实验报告第 7 题给定的矩阵与向量，运行后可查看消元过程和最终解。</p>
+            </div>
+            <div class="form-grid">
+              <label class="field field--wide">
+                <span>例题系数矩阵 A</span>
+                <textarea id="gaussian-example-matrix-input" rows="4" disabled>1 1 3
+2 4 5
+3 5 6</textarea>
+              </label>
+              <label class="field">
+                <span>例题右端向量 b</span>
+                <textarea id="gaussian-example-vector-input" rows="4" disabled>1
+2
+3</textarea>
+              </label>
+              <label class="field">
+                <span>求解方法</span>
+                <input type="text" value="选列主元高斯消去法" disabled />
+              </label>
+            </div>
+            <div class="controls-actions">
+              <button id="gaussian-example-solve-button" class="primary-button">运行例题</button>
+            </div>
+            <p id="gaussian-example-status-message" class="status-message" aria-live="polite"></p>
+          </section>
+
+          <section class="panel summary-panel">
+            <div class="panel__header">
+              <h3>例题解向量</h3>
+              <p>上三角方程组完成回代后，结果会显示在下表中。</p>
+            </div>
+            <div class="table-wrapper">
+              <table>
+                <thead>
+                  <tr>
+                    <th>变量</th>
+                    <th>数值</th>
+                  </tr>
+                </thead>
+                <tbody id="gaussian-example-solution-body"></tbody>
+              </table>
+            </div>
+          </section>
+
+          <section class="panel summary-panel">
+            <div class="panel__header">
+              <h3>例题消元步骤</h3>
+              <p>这里会记录主元选取、交换行、逐步消元以及每一步对应的增广矩阵。</p>
+            </div>
+            <pre id="gaussian-example-steps-output" class="steps-output"></pre>
+          </section>
+
+          <section class="panel controls-panel">
+            <div class="panel__header">
+              <h3>第二部分 · 通用求解</h3>
+              <p>输入任意方阵 A 和对应的右端向量 b，即可用同样的方法求解自定义线性方程组。</p>
+            </div>
+            <div class="form-grid">
+              <label class="field field--wide">
+                <span>自定义系数矩阵 A</span>
+                <textarea id="gaussian-custom-matrix-input" rows="4">1 1 3
+2 4 5
+3 5 6</textarea>
+              </label>
+              <label class="field">
+                <span>自定义右端向量 b</span>
+                <textarea id="gaussian-custom-vector-input" rows="4">1
+2
+3</textarea>
+              </label>
+              <label class="field">
+                <span>输入规则</span>
+                <input type="text" value="矩阵每行一行，元素用空格或逗号分隔" disabled />
+              </label>
+            </div>
+            <div class="controls-actions">
+              <button id="gaussian-custom-solve-button" class="primary-button">求解自定义方程组</button>
+              <button id="gaussian-custom-reset-button" class="secondary-button">恢复默认输入</button>
+            </div>
+            <p id="gaussian-custom-status-message" class="status-message" aria-live="polite"></p>
+          </section>
+
+          <section class="panel summary-panel">
+            <div class="panel__header">
+              <h3>通用求解结果</h3>
+              <p>这里显示你输入的矩阵和向量对应的解向量。</p>
+            </div>
+            <div class="table-wrapper">
+              <table>
+                <thead>
+                  <tr>
+                    <th>变量</th>
+                    <th>数值</th>
+                  </tr>
+                </thead>
+                <tbody id="gaussian-custom-solution-body"></tbody>
+              </table>
+            </div>
+          </section>
+
+          <section class="panel summary-panel">
+            <div class="panel__header">
+              <h3>通用求解步骤</h3>
+              <p>通用求解部分与例题使用完全相同的主元交换、消元和回代逻辑。</p>
+            </div>
+            <pre id="gaussian-custom-steps-output" class="steps-output"></pre>
+          </section>
+        </section>
+    </main>
+
+    <script src="./js/experiments/gaussian.js"></script>
+    <script src="./js/app.js"></script>
+  </body>
+</html>
